@@ -25,3 +25,17 @@ default. You can perform this GET request using any HTTP client. For example, us
 `curl -so /dev/null "http://example.com:2626/"`
 
 You should use your operating system's task scheduler to run this at regular intervals.
+
+Simple Password Support
+=======================
+You may enable simple passport support in order to prevent unwanted IPs being added to the log. Please be aware that the
+ password will be sent in plaintext, unless you modify the server to use HTTPS. This is mainly intended to prevent 
+accidental access by webcrawlers.
+
+Simply invoke the server with a password parameter:
+
+`node index.js -p <password>`
+
+The password will be expected as part of a urlencoded POST body. This can be sent using cURL:
+
+`curl -d 'pass=<password' -so /dev/null "http://example.com:2626/"`
