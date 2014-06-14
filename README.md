@@ -38,4 +38,4 @@ Simply invoke the server with a password parameter:
 
 The password will be expected as part of a urlencoded POST body. This can be sent using cURL:
 
-`curl -d 'pass=<password' -so /dev/null "http://example.com:2626/"`
+`curl -d 'pass=<password>' -so /dev/null "http://example.com:2626/"`
