@@ -3,6 +3,7 @@
 /**
  * Config values
  */
+var lPort = '2626';
 var rPort = '6379';
 var rHost = 'localhost';
 var rPfix = 'ipGrabber:';
@@ -43,7 +44,6 @@ if (process.argv.length > 2 && process.argv[2] === '-get') {
     // Setup the root API endpoint.
     app.get('/', function(req,res) {
         var ip = req.ip;
-        rcli.set(rPfix + "lastip", ip, redis.print);
         rcli.lpush(rPfix + "iplog", ip, redis.print);
         rcli.ltrim(rPfix + "iplog", 0, 99, redis.print);
         
@@ -54,7 +54,7 @@ if (process.argv.length > 2 && process.argv[2] === '-get') {
      * The port the server will listen on.
      * This will be taken from the PORT environment variable if possible, else it will default to 2626.
      */
-    var port = process.env.PORT || 2626;
+    var port = process.env.PORT || lPort;
 
     // Start the server.
     app.listen(port, function() {
